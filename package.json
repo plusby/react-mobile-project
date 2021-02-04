@@ -12,10 +12,11 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "mock": "json-server ./mock/mock.js -r ./mock/route.json -w -p 9000"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +35,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "animate.css": "^4.1.1",
+    "antd-mobile": "^2.3.4",
+    "http-proxy-middleware": "^1.0.6",
+    "json-server": "^0.16.3",
+    "mock": "^0.1.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-transition-group": "^4.4.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1"
   }
 }

@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 项目中的知识点
+
+### mock模拟数据  JSON-server启动本地服务
+
+### react中没有计算属性，可以使用memoize-one第三方来实现计算属性
+
+### 样式使用了 styled-components
+
+
