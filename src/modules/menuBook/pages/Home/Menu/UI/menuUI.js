@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import memoize from 'memoize-one'
 import HotCate from './hotCate'
 import Top10 from './Top10'
+import { MenuWrap } from '../StyledHome'
 
 function MEnuUI(props){
     const { list } = props
@@ -21,7 +22,7 @@ function MEnuUI(props){
     })
 
     return (
-        <>
+        <MenuWrap>
             <Header title="菜单大全" bg="orange" color="#fff"  />
             <Swiper listArr={swiperList(list)} />
             <Search 
@@ -31,7 +32,7 @@ function MEnuUI(props){
             />
             <Top10 listArr={top10List(list)}/>
             <HotCate listArr={hotCateList(list)} />
-        </>
+        </MenuWrap>
     )
 }
 

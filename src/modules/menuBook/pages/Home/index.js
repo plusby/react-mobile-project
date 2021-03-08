@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { TabBar } from 'antd-mobile';
 import {Menu} from './Menu'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { Cate } from "./Cate"
 import More from './More'
 import { actionCreator } from './Cate/index.js'
 import Animate from '@c/Hoc/animate'
 
-function Home(props) {
-    const { switchMap, selectTab, selectTabChange } = props
-    console.log('selectTab',selectTab)
-    const [ selectedTab, setTab ] = useState(selectTab || 'blueTab')
+function HomeBase(props) {
+    // const { switchMap, selectTab, selectTabChange } = props
+
     const [ fullScreen, setFullScreen ] = useState(true)
     const [ hidden, setHidden ] = useState(false)
+    const dispatch = useDispatch() // hooks情况下使用redux的dispatch
+    // const { HomeReducer, CateReducer } = useSelector(state => state) // hooks情况获取redux中的state
+    const state = useSelector(state => state) // hooks情况获取redux中的state immutable格式
+
+    // const selectTab = CateReducer.routeState.selectTab
+    // const switchMap =  HomeReducer.switchMap
+    // 使用immutable格式
+    const switchMap = state.getIn(['HomeReducer', 'switchMap'])
+    const selectTab = state.getIn(['CateReducer', 'routeState', 'selectTab'])
+    
+    const [ selectedTab, setTab ] = useState(selectTab || 'blueTab')
 
     const tabChange = (type) => {
         setTab(type);
-        selectTabChange(type)
+        // selectTabChange(type) // 非hooks情况使用redux
+        dispatch(actionCreator.changeSelectTab(type)) // hooks情况使用Redux
     }
     
     let ItemArr = [
@@ -108,7 +119,6 @@ function Home(props) {
     const [ TabItems, setTabItems] = useState([...ItemArr])
    
     useEffect(()=>{
-       
     },[switchMap])
 
     
@@ -135,14 +145,22 @@ function Home(props) {
     )
 };
 
-export default Animate(connect(
-    state=>({
-        switchMap: state.HomeReducer.switchMap,
-        selectTab: state.CateReducer.routeState.selectTab,
-    }),
-    dispatch=>({
-        selectTabChange(type){
-            dispatch(actionCreator.changeSelectTab(type))
-        }
-    })
-)(Home))
+// 使用函数模式的redux
+const Home = (props) => {
+    return Animate(HomeBase,props)
+}
+
+export default Animate(HomeBase)
+
+// 使用class模式的redux
+// export default Animate(connect(
+//     state=>({
+//         switchMap: state.HomeReducer.switchMap,
+//         selectTab: state.CateReducer.routeState.selectTab,
+//     }),
+//     dispatch=>({
+//         selectTabChange(type){
+//             dispatch(actionCreator.changeSelectTab(type))
+//         }
+//     })
+// )(Home))

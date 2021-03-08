@@ -1,15 +1,17 @@
 import { LOADDATA } from './actionType'
+import { Map } from 'immutable'
 
-const defaultState = {
+const defaultState = Map({
     list: []
-}
+})
 
 const reducer = (state = defaultState, action) => {
     switch(action.type){
         case LOADDATA:
-            return {
-                list: action.list
-            }
+            return state.set('list', action.list)
+            // return {
+            //     list: action.list
+            // }
         default:
             return state
     }

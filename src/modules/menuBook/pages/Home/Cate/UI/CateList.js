@@ -23,9 +23,7 @@ function CateList(props) {
     console.log('history',history)
 
     const goDetails = (item) =>{
-        console.log(item)
-        console.log(props)
-        history.push('/list', { title: item.name})
+        history.push('/list', { title: item.name, from: '/home'})
     }
 
     return (

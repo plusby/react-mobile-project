@@ -33,7 +33,7 @@ function More(props) {
 
 export default connect(
     state=>({
-        switchMap: state.HomeReducer.switchMap 
+        switchMap: state.getIn(['HomeReducer', 'switchMap']) 
     }),
     dispatch=>(
         {

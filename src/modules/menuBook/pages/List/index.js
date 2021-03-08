@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { NavBar, Icon } from 'antd-mobile';
 import { UlWrap } from './Style'
-import { loadDataAsync } from '../Home/Menu/index'
+import { loadDataSync } from '../Home/Menu/index'
 import Animate from '@c/Hoc/animate'
 
 function List(props) {
-    console.log(props)
     const { location, history, list, getListData } = props
     const goBack = ()=>{
-        history.goBack()
+        // history.goBack()
+        history.push('/home', { from: '/list'})
+    }
+
+    const goDetails = () => {
+        history.push('/details', { from: '/list'})
     }
     
     useEffect(()=>{
@@ -30,7 +34,7 @@ function List(props) {
                 {
                     list && list.map((item,index)=>{
                        return (
-                        <li key={index}>
+                        <li key={index} onClick={ goDetails }>
                             <img src={item.img} className="left"/>
                             <div className="right">
                                 <h3>{item.name}</h3>
@@ -50,12 +54,13 @@ export default Animate(connect(
     state=>{
         console.log('state',state)
         return {
-            list: state.MenuReducer.list.data
+            // list: state.MenuReducer.list.data
+            list: state.getIn(['MenuReducer', 'list', 'data'])
         }
     },
     dispatch =>({
         getListData(){
-            dispatch(loadDataAsync())
+            dispatch(loadDataSync())
         }
     })
 )(List));

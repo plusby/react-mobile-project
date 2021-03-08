@@ -1,5 +1,5 @@
 import { LOADDATA } from './actionType'
-import { get } from '@u/http.js'
+// import { get } from '@u/http.js'
 
 const loadDataSync = list => {
     return {
@@ -8,15 +8,23 @@ const loadDataSync = list => {
     }
 }
 
-const loadDataAsync = () => {
-    return async (dispatch) => {
-        let result = await get('/api/list')
-        console.log(result)
-        dispatch(loadDataSync(result))
+// redux-thunk
+// const loadDataAsync = () => {
+//     return async (dispatch) => {
+//         let result = await get('/api/list')
+//         console.log(result)
+//         dispatch(loadDataSync(result))
+//     }
+// }
+
+const loadDataSyncSaga = () => {
+    return {
+        type: 'loadDataSaga'
     }
 }
 
 export {
     loadDataSync,
-    loadDataAsync
+    // loadDataAsync
+    loadDataSyncSaga
 }

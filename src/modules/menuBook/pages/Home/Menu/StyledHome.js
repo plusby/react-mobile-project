@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import ellipsis from '@a/styles/ellipsis' 
 
+const MenuWrap = styled.div`
+    background: #fff;
+`
+
 const Container = styled.div`
     height: 2.8rem;
     line-height: 2.8rem;
@@ -93,6 +97,7 @@ h1{
 `
 
 export {
+    MenuWrap,
     Container,
     SwiperWrap,
     HotCateWrap,

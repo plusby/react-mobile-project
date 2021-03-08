@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import { NavBar, Icon } from 'antd-mobile';
+import Animate from '@c/Hoc/animate'
 
-export default function Details (){
+function Details (props){
      
+    const { location, history } = props
+
+    const goBack = () => {
+        history.push('/list', { from: '/details'})
+    }
+
     return (
         <div>
-            <h1>详情</h1>
+            <NavBar
+                mode="light"
+                icon={<Icon type="left" />}
+                onLeftClick={() => goBack() }
+                style={{"background": "orange",color: "#fff"}}
+            >详情</NavBar>
         </div>
     )
 }
+
+export default Animate(Details)

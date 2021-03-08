@@ -76,4 +76,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### 样式使用了 styled-components
 
+### redux中的数据通过immutableJs进行管理，解决了父组件渲染导致子组件也渲染的问题，提升渲染性能
+
+### redux异步使用saga或thunk
+
+
+
 

@@ -36,7 +36,8 @@ export default connect(
     state=>{
         console.log('state',state)
         return {
-            cateType: state.CateReducer.routeState.cateType
+            // cateType: state.CateReducer.routeState.cateType
+            cateType: state.getIn(['CateReducer', 'routeState', 'cateType'])
         }
     },
     dispatch =>({
