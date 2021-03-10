@@ -3,7 +3,7 @@ import { get } from '@u/http.js'
 import * as actionCreator from './actionCreator'
 
 function * loadDataAsync(){
-  let res = yield call(get, '/api/list')
+  let res = yield call(get, '/api/list') 
   yield put(actionCreator.loadDataSync(res))
 }
 

@@ -13,6 +13,7 @@ const initialState = Immutable.Map()
 const sagaMiddleware = createSagaMiddleware()
 
 // const store  = createStore(reducer,applyMiddleware(thunk))
+// 通过createStore创建一个store
 const store  = createStore(
   reducer,
   initialState,
